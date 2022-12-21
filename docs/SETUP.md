@@ -1,14 +1,46 @@
 # Setup
-Basil was created to run off your file system! This means that instead of opening a URL you open a file. This does mean that some mobile browser might not work as expected. You can also try to host this online but this hasn't been tested and may not work as expected.
+Basil was created to run off your file system! This means that instead of opening a URL to a hosted server you open a link to a local file. This does mean that some mobile browsers might not work as expected. You can also try to host this online but this hasn't been tested and may not work properly.
 
 ## Downloading
-Download the project as a ZIP file and unzip the files to your desired location. We recommend using a folder like `Download/Basil` to keep organised. 
+Download the project as a ZIP file and unzip the files to your desired location. Make sure all the files are in the same order! Otherwise things might break. We recommend using a folder like `Download/Basil` or `Download/Static/Basil` to keep organised!
 
-## Setup
-You will some sort of way to edit the schedules.js file to configure Basil. This can be any sort of code or text editor. Once you're ready, open `js/example.schedules.js`. Basil features a "week repeat" and "event" schedule types. The first is used to repeat for days of a week (eg repeat Monday-Friday or Monday, Wednesday). The second is used for a specific date (or event). This is useful if your schedule changes on a certain date.
-- Open the index.html file in your browser. If an error occurs or nothing happens that is intended. Bookmark this file and place the bookmark where you want to use it from. This will be hard to do later.
-- There are two commented examples in the file. The first one is an example of an event scehdule while the second is an example of a weekRepeat schedule.
-- You can uncomment either of the example and start editing using the comments as a guide.
-- Once done make sure to save the file & rename it to `example.js`
-- Open the bookmark you made previously. If configured correctly you will either be redirected or see a list of schedule items.
-- Open an issue if you need help as this documentation might not be completed and/or easy to understand
+## Configuring
+To get started you will need:
+- Have downloaded the files
+- A way to edit files like a text or code editor
+
+### Getting Started
+- Open up the main `index.html` file in your browser. Bookmark this page now as it will likely be more difficult later. The bookmark will serve as a "button" to send you to the websites you configure!
+- Open up your editor and load up `js/example.schedules.js`
+- Basil features two types of schedules. These are "event" and "weekRepeat". The first takes priority and runs on a specific date and the second repeats every specified day (eg. Mon-Fri, Tue-Wed).
+- Once you decided which schedule types to use and configure you can use this format to add a new schedule:
+
+    ```js
+    const uniqueScheduleName = {
+        name: "Example Name" // A human friendly name
+        type: "" // Either "event" or "weekRepeat"
+        dateValid: new Date("December 25, 2031") // Only use for "event" type
+        daysValid: [1,2,3,4,5] // Only use for "weekRepeat" type. Sunday = 0, Monday = 1 and so on
+        schedule: [ // Here go the schedule items. To add more just copy the example below. Make sure to have them comma seperated. 
+            {
+                name:  "Example Name", // A human friendly name
+                startTime: new Date(year, month, date, 9, 49) // The last two are the hour & minutes (24hr format). Only change the these!
+                endTime: new Date(year, month, date, 10, 49) // The last two are the hour & minutes (24hr format). Only change the these!
+                url: "https://github.com/TheLimifiedLime/Basil" // The URL to open
+            }
+        ]
+    }
+    ```
+- If you are adding multiple schedules make sure they don't conflict. Otherwise it will cause an error!
+- Now scroll to the bottom of the file. You will see something that looks like this. Replace the demoSchedule with the names of your schedules. Make sure they are comma seperated!
+    ```js
+    const schedules = [demoSchedule]
+    ```
+- You will also see something like this. If you want to have a fallback schedule in case of an error or no matching schedule then replace the placeholder! Otherwise set it as `null` to leave it empty.
+    ```js
+    const fallbackSchedule = demoNormalSchedule
+    // Alternatively set it to empty like this
+    const fallbackSchedule = null
+    ```
+- Now make sure to save the file and then rename it to `schedules.js` (removing the "example." part).
+- Click on the bookmark you set up earlier. If you are redirected or see your fallback schedule then you're done! If you see an error there could be an issue with your configuration. If you need help open an issue!
