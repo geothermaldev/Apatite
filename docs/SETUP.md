@@ -1,5 +1,5 @@
 # Setup
-Basil is meant to operate off your file system. This means that instead of opening a URL you open a file. This means that some mobile platforms might not be supported or work as expected. You can also try to host this online for multiple people to use the same schedule but this hasn't been tested.
+Basil was created to run off your file system! This means that instead of opening a URL you open a file. This does mean that some mobile browser might not work as expected. You can also try to host this online but this hasn't been tested and may not work as expected.
 
 ## Downloading
 Download the project as a ZIP file and unzip the files to your desired location. We recommend using a folder like `Download/Basil` to keep organised. 
