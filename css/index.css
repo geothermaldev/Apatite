@@ -1,0 +1,125 @@
+:root {
+  --bg-color: black;
+  --bg-color-hover: #232323;
+  --text-color: white;
+}
+
+html {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: sans-serif;
+  overflow-y: hidden;
+}
+
+.fallbackTitle {
+  text-align: center;
+  font-size: 3.5em;
+}
+
+.fallbackList {
+  display: flex;
+  height: 80vh;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+  column-gap: 2em;
+}
+
+.fallbackItemContainer {
+  transition-duration: 300ms;
+  border-radius: 1em;
+}
+
+.fallbackItemContainer:hover {
+  background-color: var(--bg-color-hover);
+  cursor: pointer;
+}
+
+.fallbackItemName {
+  font-size: 3em;
+  margin-top: .3em;
+  margin-bottom: 0px;
+  font-weight: 600
+}
+
+.fallbackItemOpenLabel {
+  font-size: 2em;
+  margin-bottom: .3em;
+}
+
+#toast {
+  background-color: red;
+  font-size: 1.2em;
+  width: 25em;
+  border-radius: 1em;
+  display : flex;
+  flex-direction: column;
+  position: absolute;
+  left: 50%;
+  /*
+    This must be -[50% of the width above] 
+    https://www.sitepoint.com/css-center-position-absolute-div/
+  */
+  margin-left: -12.5em;
+}
+
+.toastStartAnimation {
+  top: 3%;
+  animation-duration: 1.2s;
+  animation-name: toastStartAnimation;
+}
+
+.toastEndAnimation {
+  top: -40%;
+  animation-duration: 1.2s;
+  animation-name: toastEndAnimation;
+}
+
+@keyframes toastStartAnimation {
+  /* Here we have a slide down animation with a small bounce */
+  from {
+    top: -20%;
+  }
+
+  40% {
+    top: 4.5%
+  }
+
+  60% {
+    top: 3%
+  }
+
+  80% {
+    top: 3.7%;
+  }
+
+  to {
+    top: 3%;
+  }
+}
+
+@keyframes toastEndAnimation {
+  from {
+    top: 3%;
+  }
+
+  to {
+    top: -40%;
+  }
+}
+
+.toast-title {
+  /* margin: TOP | left & right | bottom */
+  margin: .4em 1rem .25em;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.toast-message {
+  /* margin: top | left right | BOTTOM */
+  margin: .25em 1rem .4em;
+}
+
+.noFallbackErrorExplanation {
+  font-size: 2.2em;
+}
