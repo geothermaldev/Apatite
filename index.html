@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Basil</title>
+    <link href="./css/index.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Here we set up placeholders for the fallback handler -->
+    <h1 id="fallbackTitle" class="fallbackTitle"></h1>
+    <div id="fallbackList" class="fallbackList"></div>
+    <div id="toast"></div>
+    <!--
+      Below are all the javascript files
+      schedule.js contains all the available schedules
+      fallbackHandler.js contain a function to handle if there isn't a suitable schedule available
+      scheduleFetcher.js handler all the logic to attempt to fetch a valid schedule
+      scheduleProcessor.js contains the logic to calculate the current schedule item and load the website or defer to the fallback handler if there isn't one
+    -->
+    <script src="./js/schedules.js"></script>
+    <script src="./js/fallbackHandler.js"></script>
+    <script src="./js/scheduleFetcher.js"></script>
+    <script src="./js/scheduleProcessor.js"></script>
+  </body>
+</html>
