@@ -78,7 +78,7 @@ const fallbackHandler = (data) => {
     );
 
     let itemName = document.createElement("p");
-    itemName.innerText = scheduleItem.friendlyName;
+    itemName.innerText = scheduleItem.name;
     itemName.setAttribute("class", "fallbackItemName");
 
     let itemOpenLabel = document.createElement("p");
