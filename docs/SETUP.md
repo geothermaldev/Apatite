@@ -24,9 +24,9 @@ To get started you will need:
         schedule: [ // Here go the schedule items. To add more just copy the example below. Make sure to have them comma seperated. 
             {
                 name:  "Example Name", // A human friendly name
-                startTime: new Date(year, month, date, 9, 49) // The last two are the hour & minutes (24hr format). Only change the these!
-                endTime: new Date(year, month, date, 10, 49) // The last two are the hour & minutes (24hr format). Only change the these!
-                url: "https://github.com/TheLimifiedLime/Basil" // The URL to open
+                startTime: new Date(year, month, date, 9, 49), // The last two are the hour & minutes (24hr format). Only change the these!
+                endTime: new Date(year, month, date, 10, 49), // The last two are the hour & minutes (24hr format). Only change the these!
+                url: "https://github.com/TheLimifiedLime/Basil", // The URL to open
             }
         ]
     }
