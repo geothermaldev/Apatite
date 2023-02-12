@@ -19,7 +19,12 @@ const eventScheduleHandler = () => {
     Define a date variable to use for comparison
     This sets the sets the year, month, and date to be consistent consistent with the date format in the schedules
   */
-  const currentDate = new Date(year, month, date);
+  let currentDate = new Date();
+  currentDate = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth(),
+    currentDate.getDate()
+  );
   // Make an array for all valid schedules
   let eventSchedule = [];
   /*
@@ -66,7 +71,8 @@ const weekRepeatScheduleHandler = () => {
 
   // Check if a schedule is valid for today
   weekRepeatSchedules.forEach((scheduleItem, index) => {
-    if (scheduleItem.daysValid.includes(day)) {
+    if (scheduleItem.daysValid.includes(new Date().getDay())) {
+      console.log("test");
       weekRepeatSchedule.push(scheduleItem);
     }
   });

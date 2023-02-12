@@ -3,7 +3,7 @@ const scheduleProcessor = () => {
   let futurePeriods = [];
   // Calculate periods not passed/in the future
   schedule.schedule.forEach((period) => {
-    const dif = period.endTime - time;
+    const dif = period.endTime - new Date();
     if (dif > 0) {
       futurePeriods.push(period);
     }
@@ -11,7 +11,7 @@ const scheduleProcessor = () => {
 
   // Go through the previous resutls and filter out periods not passed leaving the current period
   futurePeriods.forEach((period) => {
-    const dif = period.startTime - time;
+    const dif = period.startTime - new Date();
     if (dif < 0) {
       currentPeriod = period;
     }
