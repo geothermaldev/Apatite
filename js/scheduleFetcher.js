@@ -17,7 +17,7 @@ schedules.forEach((scheduleItem) => {
 const eventScheduleHandler = () => {
   /* 
     Define a date variable to use for comparison
-    This sets the sets the year, month, and date to be consistent consistent with the date format in the schedules
+    Then rewrites the variable with the sets the year, month, and date to be consistent consistent with the date format in the schedules
   */
   let currentDate = new Date();
   currentDate = new Date(
@@ -25,6 +25,7 @@ const eventScheduleHandler = () => {
     currentDate.getMonth(),
     currentDate.getDate()
   );
+
   // Make an array for all valid schedules
   let eventSchedule = [];
   /*
@@ -33,9 +34,8 @@ const eventScheduleHandler = () => {
     NOTE: Direct comparisson of both dates doesn't work so we use the difference instead
   */
   eventSchedules.forEach((scheduleItem) => {
-    if (currentDate - scheduleItem.dateValid === 0) {
+    if (currentDate - scheduleItem.dateValid === 0)
       eventSchedule.push(scheduleItem);
-    }
   });
 
   // Here we validate to see if there if more or less than one event schedule for today and act accordingly
@@ -45,10 +45,9 @@ const eventScheduleHandler = () => {
       fallbackOccured: true,
     };
     // Call the fallback handler to handle the problem
-    fallbackHandler({
-      errorMessage:
-        "Multiple event schedules have been specified for this date. Verify that you don't have more than one event schedule on the same day.",
-    });
+    fallbackHandler(
+      "Multiple event schedules have been specified for this date. Verify that you don't have more than one event schedule on the same day."
+    );
   } else if (eventSchedule.length < 1) {
     /*
       Since there are no valid event schedules check if there are any weekRepeatSchedules
@@ -57,7 +56,7 @@ const eventScheduleHandler = () => {
     if (weekRepeatSchedules.length > 0) {
       weekRepeatScheduleHandler();
     } else {
-      fallbackHandler({ errorMessage: null });
+      fallbackHandler(null);
     }
   } else {
     // Otherwise set the schedule variable to the first (and only) item in the eventSchedule array
@@ -72,7 +71,6 @@ const weekRepeatScheduleHandler = () => {
   // Check if a schedule is valid for today
   weekRepeatSchedules.forEach((scheduleItem, index) => {
     if (scheduleItem.daysValid.includes(new Date().getDay())) {
-      console.log("test");
       weekRepeatSchedule.push(scheduleItem);
     }
   });
@@ -83,13 +81,12 @@ const weekRepeatScheduleHandler = () => {
     schedule = {
       fallbackOccured: true,
     };
-    fallbackHandler({
-      errorMessage:
-        "Multiple repeating schedules have been specified for this date. Verify that you don't have more than one repeating schedule on the same day.",
-    });
+    fallbackHandler(
+      "Multiple repeating schedules have been specified for this date. Verify that you don't have more than one repeating schedule on the same day."
+    );
     // Call the fallback handler to handle the problem
   } else if (weekRepeatSchedule.length < 1) {
-    fallbackHandler({ errorMessage: null });
+    fallbackHandler(null);
   } else {
     // Otherwise set the schedule variable to the first (and only) item in the eventSchedule array
     schedule = weekRepeatSchedule[0];
@@ -108,8 +105,7 @@ if (eventSchedules.length > 0) {
   schedule = {
     fallbackOccured: true,
   };
-  fallbackHandler({
-    errorMessage:
-      "No schedules have been found. Make sure your schedules are defined correctly in the schedules.js file.",
-  });
+  fallbackHandler(
+    "No schedules have been found. Make sure your schedules are defined correctly in the schedules.js file."
+  );
 }

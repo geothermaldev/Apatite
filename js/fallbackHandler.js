@@ -46,14 +46,14 @@ const noFallbackScheduleAvailable = () => {
   fallbackListDiv.append(noFallbackErrorExplanation);
 };
 
-const fallbackHandler = (data) => {
+const fallbackHandler = (errorMessage) => {
   // Check is fallback schedule is available otherwise return and show an error
   if (fallbackSchedule === null) {
     noFallbackScheduleAvailable();
     return;
   }
 
-  errorToastDisplay(data.errorMessage);
+  errorToastDisplay(errorMessage);
 
   /*
     Set the "header" of the page as the fallback schedule title
