@@ -37,14 +37,14 @@ html {
 
 .fallbackItemName {
   font-size: 3em;
-  margin-top: .3em;
+  margin-top: 0.3em;
   margin-bottom: 0px;
-  font-weight: 600
+  font-weight: 600;
 }
 
 .fallbackItemOpenLabel {
   font-size: 2em;
-  margin-bottom: .3em;
+  margin-bottom: 0.3em;
 }
 
 #toast {
@@ -52,7 +52,7 @@ html {
   font-size: 1.2em;
   width: 25em;
   border-radius: 1em;
-  display : flex;
+  display: flex;
   flex-direction: column;
   position: absolute;
   left: 50%;
@@ -70,7 +70,7 @@ html {
 }
 
 .toastEndAnimation {
-  top: -40%;
+  top: -300%;
   animation-duration: 1.2s;
   animation-name: toastEndAnimation;
 }
@@ -82,11 +82,11 @@ html {
   }
 
   40% {
-    top: 4.5%
+    top: 4.5%;
   }
 
   60% {
-    top: 3%
+    top: 3%;
   }
 
   80% {
@@ -110,16 +110,16 @@ html {
 
 .toast-title {
   /* margin: TOP | left & right | bottom */
-  margin: .4em 1rem .25em;
+  margin: 0.4em 1rem 0.25em;
   font-size: 1.5em;
   font-weight: bold;
 }
-
 .toast-message {
   /* margin: top | left right | BOTTOM */
-  margin: .25em 1rem .4em;
+  margin: 0.25em 1rem 0.4em;
 }
 
+/* Used for the explanation message when no fallback is available */
 .noFallbackErrorExplanation {
   font-size: 2.2em;
 }
