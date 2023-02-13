@@ -13,6 +13,8 @@ class ScheduleTime {
   }
 }
 
+// INSERT SQUEDULES HERE
+
 const demoEventSchedule = {
   name: "Demo Event Schedule",
   type: "event",
