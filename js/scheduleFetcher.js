@@ -69,7 +69,7 @@ const weekRepeatScheduleHandler = () => {
   let weekRepeatSchedule = [];
 
   // Check if a schedule is valid for today
-  weekRepeatSchedules.forEach((scheduleItem, index) => {
+  weekRepeatSchedules.forEach((scheduleItem) => {
     if (scheduleItem.daysValid.includes(new Date().getDay())) {
       weekRepeatSchedule.push(scheduleItem);
     }
