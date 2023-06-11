@@ -1,9 +1,3 @@
-:root {
-  --bg-color: black;
-  --bg-color-hover: #232323;
-  --text-color: white;
-}
-
 html {
   background-color: var(--bg-color);
   color: var(--text-color);
