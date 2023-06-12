@@ -1,7 +1,5 @@
 const errorToastDisplay = (message) => {
-  // Don't show toast if no message is provided
-  if (message === null) return;
-
+  return;
   // Define the toast container
   const toastContainer = document.getElementById("toast");
 
@@ -53,42 +51,38 @@ const fallbackHandler = (errorMessage) => {
     return;
   }
 
-  errorToastDisplay(errorMessage);
+  // Show error toast if there is an error message
+  if (errorMessage !== null) errorToastDisplay(errorMessage);
 
-  /*
-    Set the "header" of the page as the fallback schedule title
-    Then define the element that will contain the list of fallback schedule items
-  */
+  // Add the fallback schedule title to the fallbackTitle element
   document.getElementById("fallbackTitle").innerText = fallbackSchedule.name;
+
+  // Then define the fallbackList element
   const fallbackList = document.getElementById("fallbackList");
 
   // Here we run this function for every schedule listing in the fallback schedule
   fallbackSchedule.schedule.forEach((scheduleItem, index) => {
+    // Create button for the schedule item, attach name, and set the type as "button"
+    let itemButton = document.createElement("button");
+    itemButton.innerText = scheduleItem.name;
+    itemButton.setAttribute("type", "button");
+
     /* 
-      Here we create an container element "in memory" (as in just existing in JS for now)
-      Then we create two more elements for the name and URL and attach their data
-      Then we attach these two elements to the original container
-      Finally, we append the container to the fallbackList div that already exists
+      If there is no URL, disable the button and add a different class
+      Otherwise, add an onclick event to the button with a different class
     */
-    let itemContainer = document.createElement("div");
-    itemContainer.setAttribute("class", "fallbackItemContainer");
-    itemContainer.setAttribute(
-      "onclick",
-      `window.location.href = "${scheduleItem.url}"`
-    );
+    if (scheduleItem.url === null) {
+      itemButton.setAttribute("disabled", "true");
+      itemButton.setAttribute("class", "fallbackItemButtonNoLink");
+    } else {
+      itemButton.setAttribute(
+        "onclick",
+        `window.location.href = "${scheduleItem.url}"`
+      );
+      itemButton.setAttribute("class", "fallbackItemButtonLink");
+    }
 
-    let itemName = document.createElement("p");
-    itemName.innerText = scheduleItem.name;
-    itemName.setAttribute("class", "fallbackItemName");
-
-    let itemOpenLabel = document.createElement("p");
-    itemOpenLabel.innerText = "Open";
-    itemOpenLabel.setAttribute("class", "fallbackItemOpenLabel");
-
-    // Add the name and URL to the container we created
-    itemContainer.append(itemName);
-    itemContainer.append(itemOpenLabel);
-    // Finally, attach the container to the fallbackList div
-    fallbackList.append(itemContainer);
+    // Finally, attach the container to the fallbackList element
+    fallbackList.append(itemButton);
   });
 };
