@@ -1,5 +1,7 @@
 :root {
-  --bg-color: black;
-  --bg-color-hover: #232323;
+  --page-background-color: black;
+  --card-background-color-hover: #232323;
   --text-color: white;
+  --font-family: sans-serif;
+  --border-radius: 16px;
 }
