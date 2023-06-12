@@ -30,18 +30,17 @@ const errorToastDisplay = (message) => {
 };
 
 const noFallbackScheduleAvailable = () => {
+  // Set the title as "Fallback Unavailable"
   document.getElementById("fallbackTitle").innerText = "Fallback Unavailable";
 
-  const noFallbackErrorExplanation = document.createElement("p");
-  noFallbackErrorExplanation.innerText =
-    "No schedules have been defined. Make sure to define your schedules in the schedules.js file.";
-  noFallbackErrorExplanation.setAttribute(
-    "class",
-    "noFallbackErrorExplanation"
-  );
+  // Create a paragraph element and set the text to the explanation
+  const errorExplanation = document.createElement("p");
+  errorExplanation.innerText =
+    "No fallback schedule has been defined. You can define one in the schedules.js file.";
+  errorExplanation.setAttribute("id", "noFallbackErrorExplanation");
 
-  const fallbackListDiv = document.getElementById("fallbackList");
-  fallbackListDiv.append(noFallbackErrorExplanation);
+  // Attach the explanation to the document
+  document.getElementById("fallbackList").append(errorExplanation);
 };
 
 const fallbackHandler = (errorMessage) => {
@@ -54,11 +53,8 @@ const fallbackHandler = (errorMessage) => {
   // Show error toast if there is an error message
   if (errorMessage !== null) errorToastDisplay(errorMessage);
 
-  // Add the fallback schedule title to the fallbackTitle element
+  // Set the fallback schedule title on the fallbackTitle element
   document.getElementById("fallbackTitle").innerText = fallbackSchedule.name;
-
-  // Then define the fallbackList element
-  const fallbackList = document.getElementById("fallbackList");
 
   // Here we run this function for every schedule listing in the fallback schedule
   fallbackSchedule.schedule.forEach((scheduleItem, index) => {
@@ -83,6 +79,6 @@ const fallbackHandler = (errorMessage) => {
     }
 
     // Finally, attach the container to the fallbackList element
-    fallbackList.append(itemButton);
+    document.getElementById("fallbackList").append(itemButton);
   });
 };
