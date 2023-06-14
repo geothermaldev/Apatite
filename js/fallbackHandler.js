@@ -69,13 +69,19 @@ const fallbackHandler = (errorMessage) => {
     */
     if (scheduleItem.url === null) {
       itemButton.setAttribute("disabled", "true");
-      itemButton.setAttribute("class", "fallbackItemButtonNoLink");
+      itemButton.setAttribute(
+        "class",
+        "fallbackItemButton fallbackItemButtonNoLink"
+      );
     } else {
       itemButton.setAttribute(
         "onclick",
         `window.location.href = "${scheduleItem.url}"`
       );
-      itemButton.setAttribute("class", "fallbackItemButtonLink");
+      itemButton.setAttribute(
+        "class",
+        "fallbackItemButton fallbackItemButtonLink"
+      );
     }
 
     // Finally, attach the container to the fallbackList element
