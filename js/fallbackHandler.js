@@ -1,32 +1,11 @@
 const errorToastDisplay = (message) => {
-  return;
-  // Define the toast container
-  const toastContainer = document.getElementById("toast");
-
-  // Create the toast title element
-  const titleElement = document.createElement("p");
-  titleElement.setAttribute("class", "toast-title");
-  titleElement.innerText = "Alert";
-  // Create the toast message element
-  const messageElement = document.createElement("p");
-  messageElement.setAttribute("class", "toast-message");
-  messageElement.innerText = message;
-
-  // Append the title and message to the toast container
-  toastContainer.append(titleElement);
-  toastContainer.append(messageElement);
-
-  // Start toast animation
-  toastContainer.classList.add("toastStartAnimation");
-
-  // Wait for animation end, verify animation, and run toast hide animation
-  document.addEventListener("animationend", (event) => {
-    if (event.animationName !== "toastStartAnimation") return;
-
-    setTimeout(() => {
-      toastContainer.classList.add("toastEndAnimation");
-    }, 2500);
-  });
+  /*
+    Here we use a normal system alert to show the error message instead of a custom solution
+    This makes it simpler to implement and is worth the tradeoff of not being able to use styling
+    For the future the Popover API may be worth considering when browser support becomes more widespread:
+    https://developer.mozilla.org/en-US/docs/Web/API/Popover_API
+  */
+  alert(message);
 };
 
 const noFallbackScheduleAvailable = () => {
