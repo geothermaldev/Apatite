@@ -30,13 +30,13 @@ const fallbackHandler = (errorMessage) => {
   }
 
   // Show error toast if there is an error message
-  if (errorMessage !== null) errorToastDisplay(errorMessage);
+  if (errorMessage) errorToastDisplay(errorMessage);
 
   // Set the fallback schedule title on the fallbackTitle element
   document.getElementById("fallbackTitle").innerText = fallbackSchedule.name;
 
   // Here we run this function for every schedule listing in the fallback schedule
-  fallbackSchedule.schedule.forEach((scheduleItem, index) => {
+  fallbackSchedule.schedule.forEach((scheduleItem) => {
     // Create button for the schedule item, attach name, and set the type as "button"
     let itemButton = document.createElement("button");
     itemButton.innerText = scheduleItem.name;
