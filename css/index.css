@@ -18,7 +18,7 @@ body {
 .fallbackItemButton {
   border-radius: var(--border-radius);
   background-color: var(--card-background-color);
-  border-color: transparent;
+  border-color: var(--border-color);
   color: var(--text-color);
   cursor: pointer;
   overflow-x: auto;
