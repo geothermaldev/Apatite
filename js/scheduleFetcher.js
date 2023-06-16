@@ -52,7 +52,7 @@ const eventScheduleHandler = () => {
     if (weekRepeatSchedules.length > 0) {
       weekRepeatScheduleHandler();
     } else {
-      fallbackHandler();
+      fallbackHandler(null);
     }
   } else {
     // Otherwise set the schedule variable to the first (and only) item in the eventSchedule array
@@ -79,7 +79,7 @@ const weekRepeatScheduleHandler = () => {
     );
     // Call the fallback handler to handle the problem
   } else if (weekRepeatSchedule.length < 1) {
-    fallbackHandler();
+    fallbackHandler(null);
   } else {
     // Otherwise set the schedule variable to the first (and only) item in the eventSchedule array
     schedule = weekRepeatSchedule[0];
