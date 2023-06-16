@@ -9,7 +9,7 @@ const scheduleProcessor = () => {
     }
   });
 
-  // Go through the previous resutls and filter out periods not passed leaving the current period
+  // Go through the previous results and filter out periods not passed leaving the current period
   futurePeriods.forEach((period) => {
     const dif = period.startTime - new Date();
     if (dif < 0) {
@@ -27,4 +27,4 @@ const scheduleProcessor = () => {
   }
 };
 
-if (!schedule.fallbackOccured) scheduleProcessor();
+if (schedule) scheduleProcessor();
