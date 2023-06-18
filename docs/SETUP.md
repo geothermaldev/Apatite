@@ -4,7 +4,7 @@ Basil was created to run off your file system! This means that instead of openin
 
 ## Downloading
 
-Download the project as a ZIP file and unzip the files to your desired location. Make sure all the files are in the same order! Otherwise things might break. We recommend using a folder like `Download/Basil` or `Download/Static/Basil` to keep organised!
+Download the project as a ZIP file and unzip the files to your desired location. Make sure all the files are in the same order! Otherwise things might break. We recommend using a folder like `Download/Basil` or `Download/Static/Basil` to keep things organised!
 
 ## Configuring
 
@@ -50,3 +50,7 @@ To get started you will need:
   ```
 - Now make sure to save the file and then rename it to `schedules.js` (removing the "example." part).
 - Click on the bookmark you set up earlier. If you are redirected or see your fallback schedule then you're done! If you see an error there could be an issue with your configuration. If you need help open an issue!
+
+### Custom Themes
+
+By default Basil only has a dark theme. But you can override this by editing the properties in [css/theme.css](../css/theme.css) by editing the file itself or using a userstyles manager!
