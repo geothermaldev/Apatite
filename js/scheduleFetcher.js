@@ -40,10 +40,6 @@ const eventScheduleHandler = () => {
 
   // Here we validate to see if there if more or less than one event schedule for today and act accordingly
   if (eventSchedule.length > 1) {
-    // Set the schedule var to mark a fallback occured
-    schedule = {
-      fallbackOccured: true,
-    };
     // Call the fallback handler to handle the problem
     fallbackHandler(
       "Multiple event schedules have been specified for this date. Verify that you don't have more than one event schedule on the same day."
@@ -77,10 +73,7 @@ const weekRepeatScheduleHandler = () => {
 
   // Here we validate to see if there if more than one event schedule for today and act accordingly
   if (weekRepeatSchedule.length > 1) {
-    // Set the schedule var to mark a fallback occured
-    schedule = {
-      fallbackOccured: true,
-    };
+    // // Set the schedule var to mark a fallback occured
     fallbackHandler(
       "Multiple repeating schedules have been specified for this date. Verify that you don't have more than one repeating schedule on the same day."
     );
@@ -102,9 +95,6 @@ if (eventSchedules.length > 0) {
 } else if (weekRepeatSchedules.length > 0) {
   weekRepeatScheduleHandler();
 } else {
-  schedule = {
-    fallbackOccured: true,
-  };
   fallbackHandler(
     "No schedules have been found. Make sure your schedules are defined correctly in the schedules.js file."
   );

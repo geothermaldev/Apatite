@@ -1,49 +1,25 @@
 const errorToastDisplay = (message) => {
-  // Don't show toast if no message is provided
-  if (message === null) return;
-
-  // Define the toast container
-  const toastContainer = document.getElementById("toast");
-
-  // Create the toast title element
-  const titleElement = document.createElement("p");
-  titleElement.setAttribute("class", "toast-title");
-  titleElement.innerText = "Alert";
-  // Create the toast message element
-  const messageElement = document.createElement("p");
-  messageElement.setAttribute("class", "toast-message");
-  messageElement.innerText = message;
-
-  // Append the title and message to the toast container
-  toastContainer.append(titleElement);
-  toastContainer.append(messageElement);
-
-  // Start toast animation
-  toastContainer.classList.add("toastStartAnimation");
-
-  // Wait for animation end, verify animation, and run toast hide animation
-  document.addEventListener("animationend", (event) => {
-    if (event.animationName !== "toastStartAnimation") return;
-
-    setTimeout(() => {
-      toastContainer.classList.add("toastEndAnimation");
-    }, 2500);
-  });
+  /*
+    Here we use a normal system alert to show the error message instead of a custom solution
+    This makes it simpler to implement and is worth the tradeoff of not being able to use styling
+    For the future the Popover API may be worth considering when browser support becomes more widespread:
+    https://developer.mozilla.org/en-US/docs/Web/API/Popover_API
+  */
+  alert(message);
 };
 
 const noFallbackScheduleAvailable = () => {
+  // Set the title as "Fallback Unavailable"
   document.getElementById("fallbackTitle").innerText = "Fallback Unavailable";
 
-  const noFallbackErrorExplanation = document.createElement("p");
-  noFallbackErrorExplanation.innerText =
-    "No schedules have been defined. Make sure to define your schedules in the schedules.js file.";
-  noFallbackErrorExplanation.setAttribute(
-    "class",
-    "noFallbackErrorExplanation"
-  );
+  // Create a paragraph element and set the text to the explanation
+  const errorExplanation = document.createElement("p");
+  errorExplanation.innerText =
+    "No fallback schedule has been defined. You can define one in the schedules.js file.";
+  errorExplanation.setAttribute("id", "noFallbackErrorExplanation");
 
-  const fallbackListDiv = document.getElementById("fallbackList");
-  fallbackListDiv.append(noFallbackErrorExplanation);
+  // Attach the explanation to the document
+  document.getElementById("fallbackList").append(errorExplanation);
 };
 
 const fallbackHandler = (errorMessage) => {
@@ -53,42 +29,41 @@ const fallbackHandler = (errorMessage) => {
     return;
   }
 
-  errorToastDisplay(errorMessage);
+  // Show error toast if there is an error message
+  if (errorMessage) errorToastDisplay(errorMessage);
 
-  /*
-    Set the "header" of the page as the fallback schedule title
-    Then define the element that will contain the list of fallback schedule items
-  */
+  // Set the fallback schedule title on the fallbackTitle element
   document.getElementById("fallbackTitle").innerText = fallbackSchedule.name;
-  const fallbackList = document.getElementById("fallbackList");
 
   // Here we run this function for every schedule listing in the fallback schedule
-  fallbackSchedule.schedule.forEach((scheduleItem, index) => {
+  fallbackSchedule.schedule.forEach((scheduleItem) => {
+    // Create button for the schedule item, attach name, and set the type as "button"
+    let itemButton = document.createElement("button");
+    itemButton.innerText = scheduleItem.name;
+    itemButton.setAttribute("type", "button");
+
     /* 
-      Here we create an container element "in memory" (as in just existing in JS for now)
-      Then we create two more elements for the name and URL and attach their data
-      Then we attach these two elements to the original container
-      Finally, we append the container to the fallbackList div that already exists
+      If there is no URL, disable the button and add a different class
+      Otherwise, add an onclick event to the button with a different class
     */
-    let itemContainer = document.createElement("div");
-    itemContainer.setAttribute("class", "fallbackItemContainer");
-    itemContainer.setAttribute(
-      "onclick",
-      `window.location.href = "${scheduleItem.url}"`
-    );
+    if (scheduleItem.url === null) {
+      itemButton.setAttribute("disabled", "true");
+      itemButton.setAttribute(
+        "class",
+        "fallbackItemButton fallbackItemButtonNoLink"
+      );
+    } else {
+      itemButton.setAttribute(
+        "onclick",
+        `window.location.href = "${scheduleItem.url}"`
+      );
+      itemButton.setAttribute(
+        "class",
+        "fallbackItemButton fallbackItemButtonLink"
+      );
+    }
 
-    let itemName = document.createElement("p");
-    itemName.innerText = scheduleItem.name;
-    itemName.setAttribute("class", "fallbackItemName");
-
-    let itemOpenLabel = document.createElement("p");
-    itemOpenLabel.innerText = "Open";
-    itemOpenLabel.setAttribute("class", "fallbackItemOpenLabel");
-
-    // Add the name and URL to the container we created
-    itemContainer.append(itemName);
-    itemContainer.append(itemOpenLabel);
-    // Finally, attach the container to the fallbackList div
-    fallbackList.append(itemContainer);
+    // Finally, attach the container to the fallbackList element
+    document.getElementById("fallbackList").append(itemButton);
   });
 };
