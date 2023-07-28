@@ -21,9 +21,7 @@ const scheduleProcessor = () => {
   if (currentPeriod && currentPeriod.url) {
     window.location.href = currentPeriod.url;
   } else {
-    fallbackHandler({
-      errorMessage: null,
-    });
+    fallbackHandler(null);
   }
 };
 
