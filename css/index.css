@@ -41,7 +41,8 @@ body {
     margin-bottom: 10%;
   }
 
-  #noFallbackErrorExplanation {
+  #noFallbackErrorExplanation,
+  noscript {
     font-size: 1.8em;
     margin-top: 45%;
   }
@@ -68,7 +69,8 @@ body {
     margin-bottom: 3.4%;
   }
 
-  #noFallbackErrorExplanation {
+  #noFallbackErrorExplanation,
+  noscript {
     font-size: 2em;
     margin-top: 32%;
   }
