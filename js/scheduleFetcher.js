@@ -4,12 +4,13 @@ let schedule;
 
 // Sort schedules into their array by "event" or "weekRepeatSchedules" type
 schedules.forEach((scheduleItem) => {
-  if (scheduleItem.type === "event") {
-    eventSchedules.push(scheduleItem);
-  }
-
-  if (scheduleItem.type === "weekRepeat") {
-    weekRepeatSchedules.push(scheduleItem);
+  switch (scheduleItem.type) {
+    case "event":
+      eventSchedules.push(scheduleItem);
+      break;
+    case "weekRepeat":
+      weekRepeatSchedules.push(scheduleItem);
+      break;
   }
 });
 
