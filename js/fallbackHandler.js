@@ -17,6 +17,7 @@ const noFallbackScheduleAvailable = () => {
   errorExplanation.innerText =
     "No fallback schedule has been defined. You can define one in the schedules.js file.";
   errorExplanation.setAttribute("id", "noFallbackErrorExplanation");
+  errorExplanation.setAttribute("lang", "en");
 
   // Attach the explanation to the document
   document.getElementById("fallbackList").append(errorExplanation);
