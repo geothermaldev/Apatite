@@ -9,54 +9,73 @@ const errorToastDisplay = (message) => {
 };
 
 const noFallbackScheduleAvailable = () => {
-  // Set the title as "Fallback Unavailable"
-  document.getElementById("fallbackTitle").innerText = "Fallback Unavailable";
+  /* 
+    This function is called whenever a fallback schedule isn't configured by the user.
+    It sets a title and creates an explanation (w/ lang attribute) to display to the user
+  */
 
-  // Create a paragraph element and set the text to the explanation
+  document.getElementById("fallbackTitle").innerText = "Fallback Unavailable";
+  document.getElementById("fallbackTitle").setAttribute("lang", "en");
+
   const errorExplanation = document.createElement("p");
   errorExplanation.innerText =
     "No fallback schedule has been defined. You can define one in the schedules.js file.";
   errorExplanation.setAttribute("id", "noFallbackErrorExplanation");
   errorExplanation.setAttribute("lang", "en");
 
-  // Attach the explanation to the document
   document.getElementById("fallbackList").append(errorExplanation);
 };
 
-const fallbackHandler = (errorMessage) => {
-  // Check is fallback schedule is available otherwise return and show an error
+const scheduleItemURLOpener = (urlArray) => {
+  /*
+    This function processes an event for whenever a button to open link(s) for a schedule item is clicked.
+    TODO: Implement opening links
+  */
+  let scheduleItemURLs = urlArray.split("|");
+};
+
+const fallbackHandler = (message) => {
+  /*
+    This function is called whenever something occurs and we need to load the fallback schedule.
+    Reasons for this include:
+    - More than one event schedule for a given day
+    - No VALID event schedules for a given day AND no repeat schedules
+    - None or more than one repeating schedule for a given day
+  */
+
+  // We check if there is a fallback schedule and if there isn't we call a function to display an error.
   if (fallbackSchedule === null) {
     noFallbackScheduleAvailable();
     return;
   }
 
-  // Show error toast if there is an error message
-  if (errorMessage) errorToastDisplay(errorMessage);
+  // If there was a message argument passed then we alert it to the user.
+  if (message) errorToastDisplay(message);
 
-  // Set the fallback schedule title on the fallbackTitle element
+  // Now we set a the title of the schedule on the fallbackTitle element.
   document.getElementById("fallbackTitle").innerText = fallbackSchedule.name;
-
-  // Here we run this function for every schedule listing in the fallback schedule
   fallbackSchedule.schedule.forEach((scheduleItem) => {
-    // Create button for the schedule item, attach name, and set the type as "button"
+    /*
+      We create a button for each ScheduleItem setting it's type and name.
+      If there aren't any URLs for that ScheduleItem we disable the button.
+      Otherwise, we add the URLs as a custom data attribute and add a click event listener.
+      Then we add the button to the container
+    */
     let itemButton = document.createElement("button");
     itemButton.innerText = scheduleItem.name;
     itemButton.setAttribute("type", "button");
 
-    /* 
-      If there is no URL, disable the button and add a different class
-      Otherwise, add an onclick event to the button with a different class
-    */
-    if (scheduleItem.url === null) {
+    if (scheduleItem.url === null || scheduleItem.url.length <= 0) {
       itemButton.setAttribute("disabled", "true");
       itemButton.setAttribute(
         "class",
         "fallbackItemButton fallbackItemButtonNoLink"
       );
     } else {
+      itemButton.setAttribute("data-urls", scheduleItem.url.join("|"));
       itemButton.setAttribute(
         "onclick",
-        `window.location.href = "${scheduleItem.url}"`
+        `scheduleItemURLOpener(event.target.dataset.urls)`
       );
       itemButton.setAttribute(
         "class",
@@ -64,7 +83,6 @@ const fallbackHandler = (errorMessage) => {
       );
     }
 
-    // Finally, attach the container to the fallbackList element
     document.getElementById("fallbackList").append(itemButton);
   });
 };
