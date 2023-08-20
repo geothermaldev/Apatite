@@ -31,7 +31,7 @@ const eventScheduleHandler = () => {
   /*
     Calculate the difference between the eventDate and today
     If this is 0 then they match and we push it into the eventSchedule array
-    NOTE: Direct comparisson of both dates doesn't work so we use the difference instead
+    NOTE: Direct comparison of both dates doesn't work so we use the difference instead
   */
   eventSchedules.forEach((scheduleItem) => {
     if (currentDate - scheduleItem.dateValid === 0)
@@ -73,7 +73,7 @@ const weekRepeatScheduleHandler = () => {
 
   // Here we validate to see if there if more than one event schedule for today and act accordingly
   if (weekRepeatSchedule.length > 1) {
-    // // Set the schedule var to mark a fallback occured
+    // Set the schedule var to mark a fallback occurred
     fallbackHandler(
       "Multiple repeating schedules have been specified for this date. Verify that you don't have more than one repeating schedule on the same day."
     );
