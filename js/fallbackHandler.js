@@ -29,9 +29,14 @@ const noFallbackScheduleAvailable = () => {
 const scheduleItemURLOpener = (urlArray) => {
   /*
     This function processes an event for whenever a button to open link(s) for a schedule item is clicked.
-    TODO: Implement opening links
+    ! This does seem to trigger anti-popup browser measures when opening more than 2 links. A delay may help.
   */
   let scheduleItemURLs = urlArray.split("|");
+  for (let iteration = 1; iteration < scheduleItemURLs.length; iteration++) {
+    window.open(scheduleItemURLs[iteration], "_blank");
+  }
+
+  window.location.href = scheduleItemURLs[0];
 };
 
 const fallbackHandler = (message) => {
