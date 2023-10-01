@@ -15,6 +15,7 @@ body {
   font-weight: 600;
 }
 
+
 .fallbackItemButton {
   border-radius: var(--border-radius);
   background-color: var(--card-background-color);
@@ -33,6 +34,10 @@ body {
   cursor: not-allowed;
 }
 
+noscript {
+  font-size: 2.3rem;
+}
+
 /* Mobile Only Styles */
 @media screen and (max-width: 600px) {
   #fallbackTitle {
@@ -41,8 +46,7 @@ body {
     margin-bottom: 10%;
   }
 
-  #noFallbackErrorExplanation,
-  noscript {
+  #noFallbackErrorExplanation {
     font-size: 1.8em;
     /* margin-top: 45%; */
   }
@@ -69,8 +73,7 @@ body {
     margin-bottom: 3.4%;
   }
 
-  #noFallbackErrorExplanation,
-  noscript {
+  #noFallbackErrorExplanation {
     font-size: 2em;
     /* margin-top: 32%; */
   }
