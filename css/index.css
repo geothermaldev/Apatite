@@ -1,3 +1,15 @@
+/* Colors & Variables */
+:root {
+  --page-background-color: black;
+  --card-background-color: #242424;
+  --card-background-color-hover: #181818;
+  --card-background-color-disabled: #181818;
+  --text-color: white;
+  --font-family: sans-serif;
+  --border-radius: 16px;
+  --border-color: transparent;
+}
+
 /* Main Cross Platform Styles */
 html {
   background-color: var(--page-background-color);
@@ -14,7 +26,6 @@ body {
 #fallbackTitle {
   font-weight: 600;
 }
-
 
 .fallbackItemButton {
   border-radius: var(--border-radius);
