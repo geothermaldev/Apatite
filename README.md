@@ -1,4 +1,10 @@
-# Apatite
+<p align="center" id="logo">
+  <img src="./resources/logo/main.svg" height="200px">
+</p>
+
+<h1 align="center">Apatite</h1>
+
+<p align="center">Effortlessly open URLs during specific time intervals with Apatite.</p>
 
 ## What is Apatite?
 
