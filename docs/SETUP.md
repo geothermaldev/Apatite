@@ -1,10 +1,10 @@
 # Setup
 
-Basil was created to run off your file system! This means that instead of opening a URL to a hosted server you open a link to a local file. This does mean that mobile browsers might not work as expected. You can also try to host this online but this hasn't been tested and may not work properly.
+Apatite was created to run off your file system! This means that instead of opening a URL to a hosted server you open a link to a local file. This does mean that mobile browsers might not work as expected. You can also try to host this online but this hasn't been tested and may not work properly.
 
 ## Downloading
 
-Download the project as a ZIP file and unzip the files to your desired location. Make sure all the files are in the same order! Otherwise things might break. We recommend using a folder like `Download/Basil` or `Download/Static/Basil` to keep things organized!
+Download the project as a ZIP file and unzip the files to your desired location. Make sure all the files are in the same order! Otherwise things might break. We recommend using a folder like `Download/Apatite` or `Download/Static/Apatite` to keep things organized!
 
 ## Configuring
 
@@ -19,7 +19,7 @@ To get started you will need:
 1. Open up the main [`index.html`](../index.html) file in your browser. You should bookmark this page now as it may be more difficult later.
    - This bookmark will serve as a link or "button" to send you to the websites you configure!
 2. Open up your editor and load the [`js/example.schedules.js`](../js/example.schedules.js) file to start writing your schedules.
-3. You should now pick what type of schedule to start with. Basil features two types and these are "event" and "weekRepeat". The first takes priority and runs on a specific date and the second repeats every specified day (eg. Mon-Fri, Tue-Wed).
+3. You should now pick what type of schedule to start with. Apatite features two types and these are "event" and "weekRepeat". The first takes priority and runs on a specific date and the second repeats every specified day (eg. Mon-Fri, Tue-Wed).
    - If you are unsure of what schedule to pick you should start with the week repeat schedule. This the type most users are looking for!
 4. Once you decided which schedule type to use you can select a template to get started. There are only a few differences between the templates and most of the contents are identical:
 
@@ -38,7 +38,7 @@ const uniqueScheduleName = {
             name:  "Example Name", // A human friendly name
             startTime: new ScheduleTime(9, 49), // The last two are the hour & minutes (24hr format). Only change the these!
             endTime: new ScheduleTime(10, 49), // The last two are the hour & minutes (24hr format). Only change the these!
-            url: "https://github.com/TheLimifiedLime/Basil", // The URL to open
+            url: "https://github.com/TheLimifiedLime/Apatite", // The URL to open
         }
     ]
 }
@@ -56,7 +56,7 @@ const uniqueScheduleName = {
             name:  "Example Name", // A human friendly name
             startTime: new ScheduleTime(9, 49), // The last two are the hour & minutes (24hr format). Only change the these!
             endTime: new ScheduleTime(10, 49), // The last two are the hour & minutes (24hr format). Only change the these!
-            url: "https://github.com/TheLimifiedLime/Basil", // The URL to open
+            url: "https://github.com/TheLimifiedLime/Apatite", // The URL to open
         }
     ]
 }
@@ -83,4 +83,4 @@ const fallbackSchedule = null;
 
 ### Custom Themes
 
-By default Basil only has a dark theme. But you can override this by editing the properties in [css/theme.css](../css/theme.css) by editing the file itself or using a user styles manager!
+By default Apatite only has a dark theme. But you can override this by editing the properties in [css/theme.css](../css/theme.css) by editing the file itself or using a user styles manager!
