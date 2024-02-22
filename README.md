@@ -1,7 +1,5 @@
 # Apatite
 
-## Notice: There is currently ongoing work on renaming the project. This means there might be inconsistent naming.
-
 ## What is Apatite?
 
 Apatite is a tool that opens a specific URL when in between certain timestamps. This can be useful for when you have a set schedule and open the same URL during a certain time period.
